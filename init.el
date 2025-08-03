@@ -373,9 +373,13 @@
 (setq text-scale-mode-step 1.1)
 
 (setq font-lock-support-mode 'jit-lock-mode)
-(setq jit-lock-stealth-time 16
+(setq jit-lock-stealth-time 1.5
 	  jit-lock-defer-contextually t
-	  jit-lock-stealth-nice 0.5)
+	  jit-lock-stealth-nice 0.2
+      jit-lock-defer-time 0.0
+      jit-lock-context-time 0.2
+      jit-lock-stealth-load 200
+      jit-lock-chunk-size 4096)
 (setq-default font-lock-multiline t)
 
 ;;; Ediff
@@ -467,11 +471,7 @@
         flyspell-duplicate-distance 12000))
 
 ;;; Org-mode
-(setq org-support-shift-select t
-      org-hide-emphasis-markers t
-      org-directory "~/Org/"
-      org-src-window-setup 'current-window
-      org-support-shift-select 'always)
+(setq org-directory "~/Org/")
 
 ;; compile
 (setq load-prefer-newer t)
@@ -495,6 +495,9 @@
 
 ;; Project
 (setq-default project-mode-line t)
+
+;;
+(setq pgtk-wait-for-event-timeout nil)
 
 ;;; Modes
 

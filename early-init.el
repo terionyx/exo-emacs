@@ -186,7 +186,8 @@
                    pdf-view-mode ibuffer-mode eshell-mode
                    shell-mode eww-mode eww-buffers-mode dired-mode
                    dired-sidebar-mode minibuffer-mode geiser-repl-mode
-                   nov-mode racket-describe-mode messages-buffer-mode))
+                   nov-mode racket-describe-mode messages-buffer-mode
+                   elfeed-search-mode elfeed-show-mode treemacs-mode))
 
 (defun exo-ignored-status-mode ()
   "Ignored modes in modeline and title."

@@ -94,6 +94,17 @@
         )
   )
 
+(use-package dape
+  :after eglot
+  :commands (dape)
+  :preface
+  (setq dape-key-prefix nil)
+  :init
+  (setq dape-buffer-window-arrangement 'right)
+  :config
+  ;; Kill compile buffer on build success
+  (add-hook 'dape-compile-compile-hooks 'kill-buffer))
+
 (setq completion-category-overrides '((eglot (styles orderless))
                                       (eglot-capf (styles orderless))))
 
@@ -260,6 +271,10 @@
     (let ((end (point)))
       (beginning-of-line)
       (forth-send-region (point) end))))
+
+;; Agda
+(load-file (let ((coding-system-for-read 'utf-8))
+                (shell-command-to-string "agda --emacs-mode locate")))
 
 (provide 'exo-develop)
 

@@ -19,7 +19,7 @@
         pdf-view-use-imagemagick t)
   (setq-default pdf-view-display-size 2.0)
   (with-eval-after-load 'pdf-view
-    (setq pdf-view-midnight-colors '("black" . "#EDD1B0"))
+    (setq pdf-view-midnight-colors '("black" . "#FDF6E3"))
     )
   )
 

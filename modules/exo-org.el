@@ -26,14 +26,19 @@
   (org-cycle-separator-lines 0)
   (org-default-notes-file (concat org-directory "/notes.org"))
   (org-ellipsis " ↩")
-  (org-hide-emphasis-markers t)
   (org-plantuml-jar-path "/usr/share/java/plantuml/plantuml.jar")
   (org-return-follows-link t)
   (org-src-ask-before-returning-to-edit-buffer nil "org-src is kinda needy out of the box")
   (org-src-preserve-indentation t)
   (org-startup-indented nil)
   (org-startup-with-inline-images t)
-
+  
+  (org-src-window-setup 'current-window)
+  (org-support-shift-select 'always)
+  (org-M-RET-may-split-line '((item . nil)))
+  (org-startup-folded 'fold)
+  (org-src-fontify-natively t)
+  
   ;; org-modern
   (org-auto-align-tags nil)
   (org-tags-column 0)
@@ -89,6 +94,13 @@
 
 (require 'org-tempo)
 
+(use-package org-appear :ensure t
+  :init
+  (setq org-appear-delay 0.2)
+  :hook
+  org-mode
+)
+
 (use-package org-bullets
   :custom
   (org-bullets-bullet-list '("◉" "⁑" "⁂" "❖" "✮" "✱" "✸"))
@@ -97,12 +109,12 @@
 
 (let* ((variable-tuple
         (cond ;;((x-list-fonts "ETbb")            '(:font "ETbb"))
-              ((x-list-fonts "Crimson Text")  '(:font "Crimson Text"))
-              ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
-              ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
-              ((x-list-fonts "Verdana")         '(:font "Verdana"))
-              ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
-              (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+         ((x-list-fonts "Crimson Text")  '(:font "Crimson Text"))
+         ((x-list-fonts "Source Sans Pro") '(:font "Source Sans Pro"))
+         ((x-list-fonts "Lucida Grande")   '(:font "Lucida Grande"))
+         ((x-list-fonts "Verdana")         '(:font "Verdana"))
+         ((x-family-fonts "Sans Serif")    '(:family "Sans Serif"))
+         (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
        (base-font-color     (face-foreground 'default nil 'default))
        (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
 
