@@ -187,7 +187,8 @@
                    shell-mode eww-mode eww-buffers-mode dired-mode
                    dired-sidebar-mode minibuffer-mode geiser-repl-mode
                    nov-mode racket-describe-mode messages-buffer-mode
-                   elfeed-search-mode elfeed-show-mode treemacs-mode))
+                   elfeed-search-mode elfeed-show-mode treemacs-mode
+                   comint-mode))
 
 (defun exo-ignored-status-mode ()
   "Ignored modes in modeline and title."
@@ -264,6 +265,11 @@
           (cons "emacs-lsp-booster" orig-result))
       orig-result)))
 (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
+
+(require 'epa-file)
+(epa-file-enable)
+(when (file-exists-p "~/.emacs.d/private/")
+  (load-library "~/.emacs.d/private/elfeed-info.el.gpg"))
 
 (provide 'early-init)
 

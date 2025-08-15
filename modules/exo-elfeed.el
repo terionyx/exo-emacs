@@ -31,8 +31,16 @@
   (elfeed-search-title-face ((t ( :slant italic))))
   )
 
-(when (file-exists-p "~/.emacs.d/private/")
-  (load "~/.emacs.d/private/elfeed-info"))
+(use-package elfeed-goodies
+  :after elfeed
+  :custom
+  (elfeed-goodies/entry-pane-position 'bottom)
+  :custom-face
+  (elfeed-goodies-show-header-title ((t (:foreground "white"))))
+  (elfeed-goodies-show-header-tag ((t (:foreground "white"))))
+  :config
+  (elfeed-goodies/setup)
+  )
 
 (use-package elfeed-protocol
   :after elfeed
