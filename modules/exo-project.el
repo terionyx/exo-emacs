@@ -5,6 +5,24 @@
 (require 'project)
 (require 'color)
 
+(defun vterm-project-shell ()
+  "Start an inferior vterm in the current project's root directory.
+    If a buffer already exists for running a vterm in the project's root,
+    switch to it. Otherwise, create a new vterm buffer.
+    With \\[universal-argument] prefix arg, create a new inferior vterm buffer
+    even if one already exists."
+  (interactive)
+  (let* ((project (project-current t))
+         (root (project-root project))
+         (shell-buffer-name (format "*vterm:%s*" (file-name-nondirectory (directory-file-name root)))))
+    (if (and (not current-prefix-arg)
+             (get-buffer shell-buffer-name))
+        (switch-to-buffer shell-buffer-name)
+      (let ((default-directory root))
+        (vterm shell-buffer-name)))))
+
+(advice-add 'project-shell :override #'vterm-project-shell)
+
 (defun project-color-background ()
   "Return a background color for the project containing this directory"
   (let* ((project (project-current))

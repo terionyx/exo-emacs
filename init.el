@@ -285,8 +285,8 @@
 
 ;;; Indent and formatting
 
-(setq-default left-fringe-width  8)
-(setq-default right-fringe-width 8)
+(setq-default left-fringe-width  2)
+(setq-default right-fringe-width 2)
 
 ;; Do not show an arrow at the top/bottomin the fringe and empty lines
 (setq-default indicate-buffer-boundaries nil)
@@ -478,6 +478,7 @@
 
 ;; eshell
 (put 'eshell 'disabled nil)
+(put 'project-eshell 'disabled nil)
 
 ;; gpg
 (after-load 'epa

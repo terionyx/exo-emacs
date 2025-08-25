@@ -62,8 +62,8 @@
 
 (set-face-attribute 'region nil :background "#366060" :extend nil)
 (set-face-attribute 'fill-column-indicator nil :foreground "#444444")
-(set-face-background 'fringe (face-attribute 'default :background))
-;; (set-face-background 'fringe "gray15")
+;;(set-face-background 'fringe (face-attribute 'default :background))
+(set-face-background 'fringe "#303030")
 
 (set-face-background 'isearch "#5F6Fa2")
 (set-face-background 'lazy-highlight "#5F5F5f")

@@ -162,7 +162,7 @@ otherwise delete a character backward."
          ("C-y" . pt/yank-pop)
          ;; M-g bindings in `goto-map'
          ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flymake)
+         ;;("M-g f" . consult-flymake)
          ("M-g g" . consult-goto-line)
          ("M-g M-g" . consult-goto-line)
          ("M-g o" . consult-outline)

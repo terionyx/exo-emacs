@@ -50,6 +50,7 @@
   (git-gutter:modified-sign "✶")
   (git-gutter:added-sign "+")
   (git-gutter:deleted-sign "✗")
+  (git-gutter:unchanged-sign " ")
   :init
   (setq git-gutter:update-interval 0.2
         git-gutter:window-width    1
@@ -58,9 +59,10 @@
         )
   :config
   (global-set-key (kbd "<left-margin> M-<mouse-1>") 'git-gutter:popup-hunk)
-  (set-face-attribute 'git-gutter:added nil :background "#19FF44" :foreground "exo/default-bg")
-  (set-face-attribute 'git-gutter:modified nil :background "#f3bf4f" :foreground "exo/default-bg")
-  (set-face-attribute 'git-gutter:deleted nil :background "#FF443b" :foreground "exo/default-bg")
+  (set-face-attribute 'git-gutter:added nil :background "#19FF44" :foreground "#303030")
+  (set-face-attribute 'git-gutter:modified nil :background "#f3bf4f" :foreground "#303030")
+  (set-face-attribute 'git-gutter:deleted nil :background "#FF443b" :foreground "#303030")
+  (set-face-attribute 'git-gutter:unchanged nil :background "white" :foreground "#303030")
   )
 
 (provide 'exo-vc)

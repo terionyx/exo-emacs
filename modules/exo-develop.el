@@ -32,6 +32,7 @@
   (((clojure-mode
      clojurec-mode
      clojurescript-mode
+     go-mode
      java-mode
      scala-mode
      racket-mode
@@ -71,7 +72,7 @@
   )
 
 (with-eval-after-load 'eglot
-  (add-to-list 'eglot-stay-out-of 'flymake)
+  ;;(add-to-list 'eglot-stay-out-of '(flymake company))
   (setq completion-category-defaults nil)
   (setq eglot-autoshutdown t
         eglot-send-changes-idle-time 0.5

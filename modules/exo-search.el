@@ -60,6 +60,10 @@
     )
   )
 
+(use-package deadgrep
+  :bind
+  (([remap project-find-regexp] . deadgrep)))
+
 (provide 'exo-search)
 
 ;;; exo-search.el ends here

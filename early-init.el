@@ -188,7 +188,7 @@
                    dired-sidebar-mode minibuffer-mode geiser-repl-mode
                    nov-mode racket-describe-mode messages-buffer-mode
                    elfeed-search-mode elfeed-show-mode treemacs-mode
-                   comint-mode))
+                   comint-mode recentf-dialog-mode))
 
 (defun exo-ignored-status-mode ()
   "Ignored modes in modeline and title."
@@ -201,13 +201,15 @@
 
 (setq-default frame-title-format
               '((:eval
-                 (concat
-                  (exo-custom-buffer-mode-icon)
-                  " "
-                  (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")
-	              (if (and (buffer-modified-p) (exo-ignored-status-mode))  " ")
-                  (if (and buffer-read-only (exo-ignored-status-mode)) " ")
-                  )
+                 (ignore-errors
+                   (concat
+                    (exo-custom-buffer-mode-icon)
+                    " "
+                    (if (buffer-file-name) (abbreviate-file-name (buffer-file-name)) "%b")
+	                (if (and (buffer-modified-p) (exo-ignored-status-mode))  " ")
+                    (if (and buffer-read-only (exo-ignored-status-mode)) " ")
+                    )
+                   )
                  )
                 ))
 
