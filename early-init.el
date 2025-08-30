@@ -35,6 +35,9 @@
                         user-emacs-directory)
       native-comp-eln-load-path)
 
+;; Don't want a mode line while loading init.
+(setq mode-line-format nil)
+
 ;; alias
 (eval-when-compile
   (defalias 'after-load #'with-eval-after-load))
@@ -165,9 +168,15 @@
 
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
-(setq tool-bar-mode nil)
-(setq scroll-bar-mode nil)
-(setq menu-bar-mode nil)
+
+(when (fboundp 'tool-bar-mode)
+  (setq tool-bar-mode nil))
+(when (fboundp 'scroll-bar-mode)
+  (setq scroll-bar-mode nil))
+(when (fboundp 'menu-bar-mode)
+  (setq menu-bar-mode nil))
+(when (fboundp 'tooltip-mode)
+  (tooltip-mode -1))
 
 ;; not used
 (defun exo-post-forward-abbreviate (base extra-string)

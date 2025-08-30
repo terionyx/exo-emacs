@@ -503,7 +503,6 @@
 ;;; Modes
 
 (desktop-save-mode 1)                   ;; add-hook not working
-(tooltip-mode -1)                       ;; no tooltips
 (blink-cursor-mode -1)                  ;; The blinking cursor interferes with settings
 (when (display-graphic-p)
   (fringe-mode '(0 . 0)))               ;; remove fringe offset

@@ -216,7 +216,6 @@
   (setq nerd-icons-ibuffer-color-icon t)
   (setq nerd-icons-ibuffer-icon-size 1.0)
   (setq nerd-icons-ibuffer-human-readable-size t)
-  (setq inhibit-compacting-font-caches t)
   (setq nerd-icons-ibuffer-formats
         '((mark modified read-only locked vc-status-mini " "
                 (icon 2 2) (name 18 18 :left :elide)     " "
