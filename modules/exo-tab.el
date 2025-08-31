@@ -6,13 +6,14 @@
   :ensure nil
   :init
   (setq tab-bar-show t
+        tab-bar-auto-width nil
         tab-bar-close-button-show nil
         tab-bar-new-button-show nil
         tab-bar-new-tab-choice "*scratch*"
         ;;tab-bar-define-keys 'numeric
         tab-bar-tab-hints t
         tab-bar-tab-name-function 'tab-bar-tab-name-truncated
-        tab-bar-tab-name-truncated-max 10
+        tab-bar-tab-name-truncated-max 15
         tab-bar-format '(tab-bar-format-menu-bar
                          tab-bar-format-history
                          tab-bar-format-tabs-groups

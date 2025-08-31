@@ -44,14 +44,6 @@
    ("M-S-<down>" . move-text-down)
    ))
 
-(use-package ultra-scroll
-  ;;https://github.com/jdtsmith/ultra-scroll
-  :init
-  (setq scroll-conservatively 101 ; important!
-        scroll-margin 0) 
-  :config
-  (ultra-scroll-mode 1))
-
 (use-package hungry-delete
   :defer 1
   :hook

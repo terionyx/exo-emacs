@@ -1295,7 +1295,6 @@ Variables controlling interaction with the Forth-process (also see
   (use-local-map forth-mode-map)
   (setq mode-name "Forth")
   (setq major-mode 'forth-mode)
-  (setq bidi-display-reordering nil)
   (forth-install-motion-hook)
   ;; convert buffer contents from block file format, if necessary
   (when (forth-detect-block-file-p)

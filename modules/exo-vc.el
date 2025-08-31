@@ -10,8 +10,7 @@
   (magit-diff-refine-hunk t)
   :config
   (add-to-list 'magit-no-confirm 'stage-all-changes)
-  (with-eval-after-load 'magit
-    (setq magit-format-file-function #'magit-format-file-nerd-icons))
+  (setq magit-format-file-function #'magit-format-file-nerd-icons)
   :custom-face
   (magit-log-author ((t (:foreground "#d04b4e"))))
   (magit-log-date ((t (:foreground "#f28735"))))
@@ -55,7 +54,7 @@
   (setq git-gutter:update-interval 0.2
         git-gutter:window-width    1
         git-gutter:ask-p           nil
-        git-gutter:hide-gutter     t
+        git-gutter:hide-gutter     nil
         )
   :config
   (global-set-key (kbd "<left-margin> M-<mouse-1>") 'git-gutter:popup-hunk)

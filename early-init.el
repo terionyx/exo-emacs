@@ -197,7 +197,7 @@
                    dired-sidebar-mode minibuffer-mode geiser-repl-mode
                    nov-mode racket-describe-mode messages-buffer-mode
                    elfeed-search-mode elfeed-show-mode treemacs-mode
-                   comint-mode recentf-dialog-mode))
+                   comint-mode recentf-dialog-mode profiler-report-mode))
 
 (defun exo-ignored-status-mode ()
   "Ignored modes in modeline and title."

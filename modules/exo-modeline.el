@@ -60,13 +60,6 @@
   "Mode line construct to display vc.")
 (put 'exo-modeline-vc 'risky-local-variable t)
 
-(defvar-local exo-modeline-position
-  '(:eval
-    (when (mode-line-window-selected-p)
-      mode-line-position))
-  "Mode line construct to display position.")
-(put 'exo-modeline-position 'risky-local-variable t)
-
 (defvar-local exo-modeline-kmacro
   '(:eval
     (when (and (mode-line-window-selected-p) defining-kbd-macro)
@@ -74,12 +67,20 @@
   "Mode line construct to display keyboard macro.")
 (put 'exo-modeline-kmacro 'risky-local-variable t)
 
-(defvar-local exo-modeline-misc-info
-  '(:eval
-    (when (mode-line-window-selected-p)
-      mode-line-misc-info))
-  "Mode line construct to display misc info.")
-(put 'exo-modeline-misc-info 'risky-local-variable t)
+;; Reduce updating project modeline
+(defvar-local exo-modeline-project-name nil "Project name for modeline")
+(put 'exo-modeline-project-name 'risky-local-variable t)
+
+(defun set-modeline-project-name (&rest r)
+  "Set `exo-modeline-project-name’."
+  (setq exo-modeline-project-name
+        (if-let ((current-project (project-current))) (project-name current-project))))
+
+(advice-add 'switch-to-buffer :before #'set-modeline-project-name)
+(advice-add 'next-buffer      :before #'set-modeline-project-name)
+(advice-add 'previous-buffer  :before #'set-modeline-project-name)
+(advice-add 'display-buffer   :before #'set-modeline-project-name)
+;;
 
 (setq-default mode-line-format
               '("%e" mode-line-front-space
@@ -89,12 +90,12 @@
                  display (min-width (6.0)))
                 exo-modeline-kmacro
                 mode-line-frame-identification mode-line-buffer-identification "   "
-                exo-modeline-position
+                mode-line-position
                 
                 mode-line-format-right-align
-                (project-mode-line project-mode-line-format)
+                exo-modeline-project-name
                 " "
-                exo-modeline-misc-info
+                mode-line-misc-info
                 exo-modeline-vc
                 " "
                 exo-modeline-major-mode
@@ -186,21 +187,8 @@
                             ""
                             vc-mode)
                            (propertize " " 'face 'my-modeline-background)
-                           ))
-             (buffer-vc-state (vc-state buffer-file-name)))
-        (concat left-decoration branch-name (exo-modeline--vc-diff) right-decoration))))
-
-(defun exo-modeline--vc-diff ()
-  "Modeline vc diff"
-  (if (stringp vc-mode)
-      (let ((plus-minus (vc-git--run-command-string buffer-file-name "diff" "--numstat" "--")))
-        (when (and plus-minus (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus))
-          (concat
-           (propertize (format "+%s" (match-string 1 plus-minus)) 'face 'exo-vc-diff-plus)
-           (propertize (format "-%s " (match-string 2 plus-minus)) 'face 'exo-vc-diff-minus)
-           )
-          )
-        )))
+                           )))
+        (concat left-decoration branch-name right-decoration))))
 
 (defun modeline-conditional-buffer-encoding ()
   "Hide \"LF UTF-8\" in modeline.

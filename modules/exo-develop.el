@@ -1,4 +1,4 @@
-;;; exo-develop.el --- development packages -*- no-byte-compile: t; lexical-binding: t; -*-
+;;; exo-develop.el --- development packages -*- no-byte-compile: t; lexical-binding: t; flycheck-disabled-checkers: (emacs-lisp-checkdoc); -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -43,32 +43,6 @@
   ;; Optimizations
   (fset #'jsonrpc--log-event #'ignore)
   (setq jsonrpc-event-hook nil)
-
-  ;; (defvar complete-at-point--timer nil "Timer for triggering complete-at-point.")
-  ;; (defun auto-complete-at-point (&rest _)
-  ;;   "Set a time to complete the current symbol at point in 0.1 seconds"
-  ;;   (when (and (not (minibufferp)))
-  ;;     ;; If a user inserts a character while a timer is active, reset
-  ;;     ;; the current timer
-  ;;     (when (timerp complete-at-point--timer)
-  ;;       (cancel-timer complete-at-point--timer))
-  ;;     (setq complete-at-point--timer
-  ;;           (run-at-time 0.2 nil
-  ;;                        (lambda ()
-  ;;                          ;; Clear out the timer and run
-  ;;                          ;; completion-at-point
-  ;;                          (when (timerp complete-at-point--timer)
-  ;;                            (cancel-timer complete-at-point--timer))
-  ;;                          (setq complete-at-point--timer nil)
-  ;;                          (completion-at-point))))))
-  ;; ;; Add a hook to enable auto-complete-at-point when eglot is enabled
-  ;; ;; this allows use to remove the hook on 'post-self-insert-hook if
-  ;; ;; eglot is disabled in the current buffer
-  ;; (add-hook 'eglot-managed-mode-hook
-  ;;           (lambda ()
-  ;;             (if eglot--managed-mode
-  ;;                 (add-hook 'post-self-insert-hook #'auto-complete-at-point nil t)
-  ;;               (remove-hook 'post-self-insert-hook #'auto-complete-at-point t))))
   )
 
 (with-eval-after-load 'eglot
@@ -121,7 +95,6 @@
 
 (use-package flycheck
   :hook
-  ;;(lisp-data-mode . (lambda () (add-to-list 'flycheck-disabled-checkers 'emacs-lisp-checkdoc)))
   (prog-mode . flycheck-mode)
   :init
   (setq-default

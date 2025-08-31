@@ -99,8 +99,9 @@
     ))
 
 (use-package neotree
-  :defer t
+  :defer 5
   :bind (("<f12>" . neotree-project-dir))
+  :hook (neo-enter . set-modeline-project-name)
   :custom
   (neo-smart-open t)
   (neo-vc-integration '(face))
